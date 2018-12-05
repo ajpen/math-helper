@@ -1,6 +1,6 @@
-var queryNameLength = 17; 
-
 function extractEquationFromURL(){
+    var queryNameLength = 17; 
+
     var queryString = window.location.search;
     var equation = queryString.substr(queryNameLength).replace(/\+/g, '%20');
     return decodeURIComponent(equation);
@@ -27,7 +27,7 @@ function findAllUnknowns(equationString){
 }
 
 
-function writeSolutionMessage(message){
+function writeErrorMessage(message){
     var equationDiv = document.getElementById('equationPlaceholder');
     equationDiv.setAttribute('style', 'color:#4BC2DB;');
     equationDiv.innerHTML = message;
@@ -55,7 +55,7 @@ function solveAndRender(){
     var equation = extractEquationFromURL();
 
     if (equation.length <= 0){
-        writeSolutionMessage("Please enter a valid Equation below.");
+        writeErrorMessage("Please enter a valid Equation below.");
         return;
     }
 
@@ -64,7 +64,7 @@ function solveAndRender(){
     }
     catch(e){
         console.log("Thrown when parsing given equation: \n" + e.message);    
-        writeSolutionMessage("Invalid/Unsupported Equation Given. Please enter a valid and supported equation.");
+        writeErrorMessage("Invalid/Unsupported Equation Given. Please enter a valid and supported equation.");
         return;        
     }
     var unknowns = findAllUnknowns(equation);
@@ -77,7 +77,7 @@ function solveAndRender(){
         }
         catch(e){
             console.log("Thrown when solving for unknowns: \n" + e.message);
-            writeSolutionMessage("Invalid/Unsupported Equation Given. Please enter a valid and supported equation.");
+            writeErrorMessage("Invalid/Unsupported Equation Given. Please enter a valid and supported equation.");
             return;
         }
     }
