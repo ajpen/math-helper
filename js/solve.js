@@ -7,7 +7,7 @@ function extractEquationFromURL(){
 }
 
 function findAllUnknowns(equationString){
-    // TODO: Modify to find only one instance of a variable. If x appears twice, it will detect it twice
+
     var unknowns = "";
 
     for (var i=0; i<equationString.length; i++){
