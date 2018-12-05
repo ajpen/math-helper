@@ -55,7 +55,7 @@ function solveAndRender(){
     var equation = extractEquationFromURL();
 
     if (equation.length <= 0){
-        writeSolutionMessage("Please Enter a valid Equation below.");
+        writeSolutionMessage("Please enter a valid Equation below.");
         return;
     }
 
