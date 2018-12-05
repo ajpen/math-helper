@@ -59,7 +59,7 @@
                                         <div id="solve">
                                             <form action="/solve.html" method="GET" style="color:#FF817F">
                                                 <div class="form-group container">
-                                                    <label for="equation-input">Enter Equation(s):</label>
+                                                    <label for="equation-input">Enter Equation:</label>
                                                     <textarea class="form-control" id="equation-input" name="solve-equations" required></textarea>
                                                     <br>
                                                     <button class="btn btn-outline-info float-right" type="submit">Solve</button>
@@ -70,27 +70,6 @@
                                     <br>
                                 </div>
                                 <br>
-                                <div class="card">
-                                    <a class="clickable-card" data-toggle="collapse" href="#factor-form" role="button" aria-expanded="false" aria-controls="factor-form">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-center" style="color:#23B5D3; font-weight: bold;">Factor</h5>
-                                            <p class="text-center" style="color:#4BC2DB;">View step by step instructions for factoring expressions</p>
-                                        </div>
-                                    </a>
-                                    <div class="collapse" id="factor-form" data-parent="#card-deck">
-                                        <div id="factor">
-                                            <form action="/factor.html" method="GET" style="color:#FF817F">
-                                                <div class="form-group container">
-                                                    <label for="expression-input">Enter Expression:</label>
-                                                    <textarea class="form-control" id="expression-input" name="factor-expression" required></textarea>
-                                                    <br>
-                                                    <button class="btn btn-outline-info float-right" type="submit">Factor</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <br>
-                                </div>
                                 <br>
                                 <div class="card">
                                     <a class="clickable-card" data-toggle="collapse" href="#graph-form" role="button" aria-expanded="false" aria-controls="graph-form">
@@ -120,7 +99,6 @@
                         <br>
                         <h5 class="text-center" style="color:#23B5D3; text-decoration: underline">Help</h5>
                         <ol style="color:#23B5D3">
-                            <li>Use commas to separate equations in a system.</li>
                             <li>
                                 Be sure to enclose entire expressions in parenthesis to prevent misinterpretation. For example: <br>
                                 <span style="color:#34332E;" class="font-weight-bold">(x^2 + y) / (x + 2)</span> 

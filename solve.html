@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
         
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" 
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" 
         integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -56,8 +56,8 @@
                     <br>
                     <div class="card">
                         <div class="card-body solution">
-                            <div id="equation" class="text-center"></div>
-                            <div id="solution" class="text-center"></div>
+                            <div id="equationPlaceholder" class="text-center"></div>
+                            <div id="solutionPlaceholder" class="text-center"></div>
                         </div>
                     </div>
                     <script type="text/javascript" src="/js/solve.js"></script>
@@ -69,6 +69,22 @@
                             <div id="explanation"></div>
                         </div>
                     </div> -->
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="card">
+                        <div id="solve">
+                            <form action="/solve.html" method="GET" style="color:#FF817F">
+                                <div class="form-group container">
+                                    <label for="equation-input">Enter Equation(s):</label>
+                                    <textarea class="form-control" id="equation-input" name="solve-equations" required></textarea>
+                                    <br>
+                                    <button class="btn btn-outline-info float-right" type="submit">Solve</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class="col" id="spacing"></div>
             </div>

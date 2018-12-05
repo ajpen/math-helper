@@ -7,23 +7,29 @@ function extractEquationFromURL(){
 }
 
 function findAllUnknowns(equationString){
-    
-    var unknowns = [];
+    // TODO: Modify to find only one instance of a variable. If x appears twice, it will detect it twice
+    var unknowns = "";
 
     for (var i=0; i<equationString.length; i++){
         var charCode = equationString.charCodeAt(i);
 
         if ((charCode > 64 && charCode < 91) ||
             (charCode > 96 && charCode < 123)){
-
-            unknowns.push(equationString[i]);
+            
+            // Only add unknown once if it appears multiple times in the equation
+            if (unknowns.indexOf(equationString[i]) === -1){
+                unknowns += equationString[i];
+            }
         }
     }
+
+    return unknowns;
 }
 
 
 function writeSolutionMessage(message){
-    var equationDiv = document.getElementById('equation');
+    var equationDiv = document.getElementById('equationPlaceholder');
+    equationDiv.setAttribute('style', 'color:#4BC2DB;');
     equationDiv.innerHTML = message;
 }
 
@@ -32,7 +38,7 @@ function renderSolutions(solutions){
     // Solutions are assumed to be an array of unknown and answer pairs.
     // for example ["x", "24"]
 
-    var solutionDiv = document.getElementById('solution');
+    var solutionDiv = document.getElementById('solutionPlaceholder');
     
     for (var i=0; i<solutions.length; i++){
 
@@ -48,11 +54,19 @@ function renderSolutions(solutions){
 function solveAndRender(){
     var equation = extractEquationFromURL();
 
-    if (equation.length > 0){
-        writeSolutionMessage("Please Enter an Equation or system.");
+    if (equation.length <= 0){
+        writeSolutionMessage("Please Enter a valid Equation below.");
+        return;
     }
 
-    var eq = algebra.parse(equation);
+    try {
+        var eq = algebra.parse(equation);        
+    }
+    catch(e){
+        console.log("Thrown when parsing given equation: \n" + e.message);    
+        writeSolutionMessage("Invalid/Unsupported Equation Given. Please enter a valid and supported equation.");
+        return;        
+    }
     var unknowns = findAllUnknowns(equation);
     var answers = [];
 
@@ -61,13 +75,16 @@ function solveAndRender(){
             var answer = eq.solveFor(unknowns[i]);
             answers.push([unknowns[i], answer]);
         }
-        catch{
+        catch(e){
+            console.log("Thrown when solving for unknowns: \n" + e.message);
             writeSolutionMessage("Invalid/Unsupported Equation Given. Please enter a valid and supported equation.");
             return;
         }
     }
 
-    katex.render(algebra.toTex(eq) + "\newline", equation);
+    katex.render(algebra.toTex(eq), equationPlaceholder);
     renderSolutions(answers);
     
 }
+
+solveAndRender();
