@@ -48,7 +48,7 @@
                             <form action="/graph.html" method="GET" style="color:#FF817F">
                                 <div class="form-group container">
                                     <label for="equation-input">Enter Function or System:</label>
-                                    <textarea class="form-control" id="graph-input" name="graph-function" required></textarea>
+                                    <textarea class="form-control" id="graph-input" name="graph-function" placeholder="e.g. x^2 + 4x + 4, 2x^2" required></textarea>
                                     <br>
                                     <button class="btn btn-outline-info float-right" type="submit">Solve</button>
                                 </div>
@@ -61,12 +61,12 @@
             <div id="plotPlaceholder" class="row" style="display:none;">
                 <div class="col"></div>
                 <div class="col-8">
-                    <div id="plot" class="card"></div>
+                    <div id="plot" class="card text-center"></div>
                     <br>
                     <form action="/graph.html" method="GET" style="color:#FF817F">
                         <div class="form-group container">
                             <label for="equation-input">Enter Function or System:</label>
-                            <input type="text" class="form-control" id="equation-input" name="graph-function" required></input>
+                            <input type="text" class="form-control" id="equation-input" name="graph-function" placeholder="e.g. x^2 + 4x + 4, 2x^2" required></input>
                             <br>
                             <button class="btn btn-outline-info float-right" type="submit">Solve</button>
                         </div>

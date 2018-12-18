@@ -11,6 +11,7 @@ function writeErrorMessage(message){
     var equationDiv = document.getElementById('plot');
     equationDiv.setAttribute('style', 'color:#4BC2DB;');
     equationDiv.innerHTML = message;
+    document.getElementById('plotPlaceholder').style.display = "";
 }
 
 function parseFunctions(functionString){
@@ -37,7 +38,7 @@ function evaluateAndPlot(){
 
     if (functionString <= 0){
         var functionForm = document.getElementById('graph');
-        functionForm.style.display = "block";
+        functionForm.style.display = "";
         return;
     }
 
@@ -45,7 +46,7 @@ function evaluateAndPlot(){
 
     if (functionExpressions.length <= 0){
             writeErrorMessage(
-                "Invalid/Unsupported expression entered. Please Enter a valid expression");
+                "Invalid/Unsupported expression entered. Please enter a valid expression");
         return;
     }
 
@@ -58,7 +59,7 @@ function evaluateAndPlot(){
         catch(e){
             console.log("Error caught when evaluating function expressions:\n" + e.message);
             writeErrorMessage(
-                "Invalid/Unsupported expression entered. Please Enter a valid expression");
+                "Invalid/Unsupported expression entered. Please enter a valid expression");
             return;
         }
     }
@@ -75,7 +76,7 @@ function evaluateAndPlot(){
     catch(e){
         console.log("Error caught when attempting to plot expressions:\n" + e.message);
         writeErrorMessage(
-            "Invalid/Unsupported expression entered. Please Enter a valid expression");
+            "Invalid/Unsupported expression entered. Please enter a valid expression");
         return; 
     }
 }
